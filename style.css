@@ -75,10 +75,17 @@ body{
   font-weight:700;
 }
 
+.top-offer-icon{
+  width:17px;
+  height:17px;
+  object-fit:contain;
+  vertical-align:middle;
+}
+
 .container{
   width:min(100%,1180px);
   margin:auto;
-  padding:28px 20px 70px;
+  padding:24px 20px 70px;
   animation:fadeUp .8s ease;
 }
 
@@ -87,7 +94,7 @@ body{
   align-items:center;
   justify-content:space-between;
   gap:22px;
-  margin-bottom:34px;
+  margin-bottom:28px;
 }
 
 .logo{
@@ -140,10 +147,19 @@ body{
   font-size:14px;
   font-weight:800;
   transition:.25s;
+  display:flex;
+  align-items:center;
+  gap:7px;
 }
 
 .desktop-nav a:hover{
   color:#b8860b;
+}
+
+.nav-icon{
+  width:16px;
+  height:16px;
+  object-fit:contain;
 }
 
 .share-btn{
@@ -178,26 +194,33 @@ body{
 .hero-card{
   position:relative;
   display:grid;
-  grid-template-columns:230px minmax(0,1fr) 270px;
+  grid-template-columns:220px 1fr 320px;
   align-items:center;
-  gap:34px;
-  background:rgba(255,255,255,.92);
-  border:1px solid rgba(184,134,11,.15);
-  border-radius:34px;
-  padding:34px 40px;
-  margin-bottom:28px;
-  box-shadow:0 28px 90px rgba(0,0,0,.06);
-  overflow:hidden;
+  gap:30px;
+
+  background:transparent;
+
+  border:none;
+
+  border-radius:0;
+
+  padding:10px 0;
+
+  margin-bottom:20px;
+
+  box-shadow:none;
+
+  overflow:visible;
 }
 
 .hero-card::before{
   content:"";
   position:absolute;
-  width:460px;
-  height:460px;
+  width:430px;
+  height:430px;
   border-radius:50%;
   right:-160px;
-  top:-110px;
+  top:-120px;
   background:radial-gradient(circle,rgba(255,216,107,.25),transparent 67%);
   pointer-events:none;
 }
@@ -209,12 +232,12 @@ body{
 
 .avatar,
 .hero-avatar{
-  width:150px;
-  height:150px;
+  width:190px;
+  height:190px;
   border-radius:50%;
   overflow:hidden;
   border:3px solid rgba(255,216,107,.55);
-  box-shadow:0 22px 60px rgba(255,216,107,.25);
+  box-shadow:0 18px 50px rgba(255,216,107,.23);
   background:#fffdf8;
   animation:none;
 }
@@ -239,16 +262,16 @@ body{
   display:flex;
   align-items:center;
   gap:10px;
-  font-size:clamp(38px,5vw,58px);
+  font-size:clamp(30px,4vw,46px);
   line-height:1.05;
   font-weight:900;
   letter-spacing:-2px;
-  margin-bottom:14px;
+  margin-bottom:12px;
 }
 
 .verified-icon{
-  width:32px;
-  height:32px;
+  width:28px;
+  height:28px;
   object-fit:contain;
   filter:
     brightness(0)
@@ -263,28 +286,28 @@ body{
 
 .subtitle{
   color:#7d5b0c;
-  font-size:26px;
-  font-weight:600;
-  margin-bottom:12px;
+  font-size:22px;
+  font-weight:700;
+  margin-bottom:10px;
 }
 
 .bio{
   color:#6f6f6f;
-  font-size:16px;
-  line-height:1.7;
-  max-width:520px;
+  font-size:14px;
+  line-height:1.65;
+  max-width:500px;
 }
 
 .hero-actions{
   display:flex;
   gap:12px;
-  margin-top:26px;
+  margin-top:22px;
 }
 
 .hero-btn{
-  height:50px;
-  padding:0 20px;
-  border-radius:16px;
+  height:44px;
+  padding:0 18px;
+  border-radius:14px;
   border:1px solid rgba(184,134,11,.20);
   background:#fff;
   color:#111;
@@ -303,8 +326,8 @@ body{
 
 .hero-btn-icon,
 .social-icon{
-  width:20px;
-  height:20px;
+  width:19px;
+  height:19px;
   object-fit:contain;
   filter:none;
 }
@@ -318,8 +341,8 @@ body{
 }
 
 .hero-cart-img{
-  width:620px;
-  max-width:150%;
+  width:470px;
+  max-width:145%;
   object-fit:contain;
   user-select:none;
   pointer-events:none;
@@ -328,43 +351,6 @@ body{
 .discount-bubble,
 .coin{
   display:none;
-}
-
-.benefits{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-  margin-bottom:46px;
-}
-
-.benefit-card{
-  min-height:142px;
-  background:rgba(255,255,255,.92);
-  border:1px solid rgba(184,134,11,.14);
-  border-radius:24px;
-  padding:24px;
-  display:flex;
-  gap:14px;
-  align-items:flex-start;
-  box-shadow:0 18px 50px rgba(0,0,0,.04);
-}
-
-.benefit-icon{
-  font-size:27px;
-  flex-shrink:0;
-}
-
-.benefit-card h3{
-  font-size:17px;
-  line-height:1.2;
-  font-weight:900;
-  margin-bottom:8px;
-}
-
-.benefit-card p{
-  color:#666;
-  font-size:13px;
-  line-height:1.55;
 }
 
 .social-section{
@@ -380,11 +366,11 @@ body{
   align-items:center;
   justify-content:space-between;
   gap:16px;
-  margin-bottom:24px;
+  margin-bottom:22px;
 }
 
 .premium-section-title h3{
-  font-size:34px;
+  font-size:32px;
   line-height:1.15;
   font-weight:900;
   letter-spacing:-1px;
@@ -393,7 +379,7 @@ body{
 .premium-section-title p{
   color:#777;
   margin-top:7px;
-  font-size:15px;
+  font-size:14px;
 }
 
 .section-actions{
@@ -403,8 +389,8 @@ body{
 }
 
 .see-all-btn{
-  height:46px;
-  padding:0 22px;
+  height:44px;
+  padding:0 20px;
   border:none;
   border-radius:15px;
   background:linear-gradient(135deg,#ffd86b,#b8860b);
@@ -420,8 +406,8 @@ body{
 }
 
 .layout-toggle{
-  width:46px;
-  height:46px;
+  width:44px;
+  height:44px;
   border-radius:15px;
   border:1px solid rgba(184,134,11,.20);
   background:rgba(255,255,255,.9);
@@ -452,7 +438,7 @@ body{
 .products.grid-view{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:44px;
+  gap:28px;
 }
 
 .card{
@@ -642,11 +628,11 @@ body{
 }
 
 .security-strip{
-  margin-top:32px;
+  margin-top:28px;
   display:flex;
   justify-content:space-between;
   gap:20px;
-  padding:20px 24px;
+  padding:18px 22px;
   border-radius:20px;
   background:rgba(255,255,255,.88);
   border:1px solid rgba(184,134,11,.16);
@@ -654,15 +640,23 @@ body{
   box-shadow:0 18px 50px rgba(0,0,0,.035);
 }
 
+.strip-icon{
+  width:20px;
+  height:20px;
+  object-fit:contain;
+  vertical-align:middle;
+  margin-right:6px;
+}
+
 .instagram-banner{
-  margin-top:32px;
+  margin-top:28px;
   background:linear-gradient(135deg,#111,#1b1b1b);
   color:#fff;
-  border-radius:30px;
-  padding:34px 42px;
+  border-radius:28px;
+  padding:28px 38px;
   display:grid;
-  grid-template-columns:180px 1fr 220px;
-  gap:26px;
+  grid-template-columns:170px 1fr 200px;
+  gap:24px;
   align-items:center;
   overflow:hidden;
 }
@@ -674,32 +668,33 @@ body{
 }
 
 .gift-box img{
-  width:330px;
-  max-width:170%;
+  width:300px;
+  max-width:160%;
   object-fit:contain;
   user-select:none;
   pointer-events:none;
 }
 
 .instagram-banner-content h2{
-  font-size:34px;
+  font-size:32px;
   line-height:1.15;
-  margin-bottom:12px;
+  margin-bottom:10px;
   color:#ffd86b;
 }
 
 .instagram-banner-content p{
   color:#f2f2f2;
   line-height:1.6;
-  font-size:15px;
+  font-size:14px;
 }
 
 .instagram-banner-btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  margin-top:20px;
-  padding:14px 24px;
+  gap:8px;
+  margin-top:18px;
+  padding:13px 22px;
   border-radius:15px;
   text-decoration:none;
   background:linear-gradient(135deg,#ffd86b,#b8860b);
@@ -707,9 +702,15 @@ body{
   font-weight:900;
 }
 
+.banner-btn-icon{
+  width:18px;
+  height:18px;
+  object-fit:contain;
+}
+
 .phone-preview{
-  min-height:160px;
-  border-radius:24px;
+  min-height:140px;
+  border-radius:22px;
   border:1px solid rgba(255,216,107,.28);
   background:rgba(255,255,255,.04);
   color:#ffd86b;
@@ -722,18 +723,18 @@ body{
 
 .footer{
   text-align:center;
-  margin-top:44px;
+  margin-top:38px;
   color:#8a7a4a;
   font-size:13px;
 }
 
 .back-top-btn{
-  margin-top:24px;
+  margin-top:22px;
   border:none;
   background:linear-gradient(135deg,#ffd86b,#b8860b);
   color:#111;
-  padding:13px 20px;
-  border-radius:15px;
+  padding:12px 18px;
+  border-radius:14px;
   font-weight:900;
   cursor:pointer;
 }
@@ -810,7 +811,7 @@ body{
   }
 
   .hero-card{
-    grid-template-columns:180px 1fr;
+    grid-template-columns:150px 1fr;
   }
 
   .hero-visual{
@@ -820,20 +821,21 @@ body{
   .products.grid-view{
     grid-template-columns:repeat(3,1fr);
   }
-
-  .benefits{
-    grid-template-columns:repeat(2,1fr);
-  }
 }
 
 @media(max-width:760px){
   .top-offer-bar{
     font-size:11px;
-    padding:8px 10px;
+    padding:7px 8px;
+  }
+
+  .top-offer-icon{
+    width:14px;
+    height:14px;
   }
 
   .container{
-    padding:18px 12px 60px;
+    padding:14px 12px 55px;
   }
 
   .desktop-nav{
@@ -841,9 +843,10 @@ body{
   }
 
   .share-btn{
-    width:46px;
-    height:46px;
+    width:44px;
+    height:44px;
     padding:0;
+    border-radius:14px;
   }
 
   .share-btn span{
@@ -851,15 +854,38 @@ body{
   }
 
   .topbar{
+    margin-bottom:14px;
+  }
+
+  .logo-icon{
+    width:46px;
+    height:46px;
+    border-radius:14px;
+    font-size:22px;
+  }
+
+  .logo-text h2{
+    font-size:18px;
+  }
+
+  .logo-text p{
+    font-size:10px;
+  }
+
+  .hero-card{
+    grid-template-columns:1fr;
+    text-align:center;
+    padding:18px 14px;
+    border-radius:22px;
     margin-bottom:18px;
   }
 
-.hero-card{
-  grid-template-columns:1fr;
-  text-align:center;
-  padding:22px 14px;
-  border-radius:24px;
-}
+  .hero-card::before{
+    width:260px;
+    height:260px;
+    right:-110px;
+    top:-90px;
+  }
 
   .hero-left{
     order:1;
@@ -869,82 +895,80 @@ body{
     order:2;
   }
 
-.hero-center h1{
-  justify-content:center;
-  font-size:27px;
-  letter-spacing:-1px;
-}
+  .hero-center h1{
+    justify-content:center;
+    font-size:27px;
+    letter-spacing:-1px;
+    margin-bottom:9px;
+  }
 
-.avatar,
-.hero-avatar{
-  width:78px;
-  height:78px;
-}
+  .verified-icon{
+    width:23px;
+    height:23px;
+  }
 
-.subtitle{
-  font-size:17px;
-}
+  .avatar,
+  .hero-avatar{
+    width:78px;
+    height:78px;
+  }
 
-.bio{
-  font-size:12px;
-  max-width:280px;
-  margin:auto;
-}
+  .subtitle{
+    font-size:17px;
+    margin-bottom:8px;
+  }
+
+  .bio{
+    font-size:12px;
+    line-height:1.55;
+    max-width:280px;
+    margin:auto;
+  }
 
   .hero-actions{
     justify-content:center;
     flex-wrap:wrap;
+    margin-top:16px;
   }
 
-.hero-btn{
-  height:46px;
-  border-radius:14px;
-  font-size:12px;
-}
-
-  .benefits{
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-    margin-bottom:32px;
+  .hero-btn{
+    height:40px;
+    padding:0 14px;
+    border-radius:13px;
+    font-size:12px;
   }
 
-  .benefit-card{
-    min-height:150px;
-    padding:16px;
-    border-radius:19px;
-    flex-direction:column;
-    gap:8px;
-  }
-
-  .benefit-card h3{
-    font-size:14px;
-  }
-
-  .benefit-card p{
-    font-size:11px;
+  .hero-btn-icon{
+    width:17px;
+    height:17px;
   }
 
   .section-title{
     align-items:flex-end;
+    gap:10px;
+    margin-bottom:16px;
   }
 
   .premium-section-title h3{
-    font-size:26px;
+    font-size:23px;
   }
 
   .premium-section-title p{
     font-size:12px;
+    max-width:230px;
   }
 
   .see-all-btn{
-    height:42px;
-    padding:0 14px;
-    font-size:12px;
+    height:40px;
+    padding:0 12px;
+    font-size:11px;
+    border-radius:13px;
   }
 
   .layout-toggle{
-    width:42px;
-    height:42px;
+    width:40px;
+    height:40px;
+    border-radius:13px;
   }
 
   .products.grid-view{
@@ -953,27 +977,33 @@ body{
   }
 
   .square-image{
-    height:140px;
+    height:130px;
   }
 
   .square-info{
-    padding:11px;
+    padding:10px;
   }
 
   .square-info h2{
     font-size:12px;
     min-height:34px;
+    margin-bottom:8px;
   }
 
   .square-info p{
-    font-size:17px;
-    margin-bottom:10px;
+    font-size:16px;
+    margin-bottom:9px;
   }
 
   .buy-btn{
-    height:38px;
+    height:36px;
     font-size:11px;
-    border-radius:12px;
+    border-radius:11px;
+  }
+
+  .buy-btn img{
+    width:14px;
+    height:14px;
   }
 
   .card{
@@ -981,9 +1011,9 @@ body{
     border-radius:18px;
   }
 
-.icon{
-  width:48px;
-  height:48px;
+  .icon{
+    width:48px;
+    height:48px;
     border-radius:14px;
   }
 
@@ -1009,26 +1039,51 @@ body{
     flex-direction:column;
     gap:10px;
     font-size:12px;
-    padding:16px;
+    padding:14px;
+    margin-top:22px;
   }
 
   .instagram-banner{
     grid-template-columns:1fr;
     text-align:center;
-    padding:26px 18px;
-    gap:18px;
+    padding:22px 16px;
+    gap:16px;
+    border-radius:22px;
+    margin-top:22px;
   }
 
-  .gift-box{
-    font-size:72px;
+  .gift-box img{
+    width:180px;
+    max-width:100%;
   }
 
   .instagram-banner-content h2{
-    font-size:27px;
+    font-size:24px;
+  }
+
+  .instagram-banner-content p{
+    font-size:12px;
+  }
+
+  .instagram-banner-btn{
+    padding:12px 18px;
+    font-size:12px;
   }
 
   .phone-preview{
-    min-height:90px;
+    min-height:72px;
+    border-radius:18px;
+    font-size:13px;
+  }
+
+  .footer{
+    font-size:11px;
+    margin-top:30px;
+  }
+
+  .back-top-btn{
+    padding:11px 16px;
+    font-size:11px;
   }
 
   .mouse-glow{
@@ -1042,15 +1097,21 @@ body{
   }
 
   .square-image{
-    height:120px;
+    height:118px;
   }
 
   .hero-center h1{
-    font-size:28px;
+    font-size:25px;
   }
 
-  .benefits{
-    grid-template-columns:1fr;
+  .avatar,
+  .hero-avatar{
+    width:72px;
+    height:72px;
+  }
+
+  .hero-card{
+    padding:16px 12px;
   }
 }
 
