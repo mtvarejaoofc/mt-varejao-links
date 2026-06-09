@@ -435,6 +435,31 @@
       box-shadow:0 18px 42px rgba(255,216,107,.28);
     }
 
+    .cancel-edit{
+      width:100%;
+      height:48px;
+      margin-top:10px;
+      border-radius:15px;
+      background:rgba(255,255,255,.055);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.12);
+      font-weight:800;
+      transition:.25s;
+      display:none;
+    }
+
+    .cancel-edit:hover{
+      background:rgba(255,87,87,.12);
+      border-color:rgba(255,87,87,.30);
+      color:#ffb3b3;
+    }
+
+    .edit:hover{
+      background:rgba(255,216,107,.14);
+      color:var(--gold);
+      border-color:rgba(255,216,107,.25);
+    }
+
     .hint{
       margin-top:16px;
       color:#8d8d8d;
@@ -763,6 +788,12 @@
         height:47px;
         font-size:13px;
         border-radius:14px;
+      }
+
+      .cancel-edit{
+        height:44px;
+        font-size:12px;
+        border-radius:13px;
       }
 
       .hint{
@@ -1159,6 +1190,7 @@
       addDoc,
       getDocs,
       deleteDoc,
+      updateDoc,
       doc,
       query,
       orderBy
@@ -1182,6 +1214,7 @@
 
     let allProducts = [];
     let currentPage = "products";
+    let editingProductId = null;
 
     function showToast(message){
       toast.textContent = message;
@@ -1400,8 +1433,9 @@
             </div>
 
             <button class="add" id="addBtn">+ Adicionar Produto</button>
+            <button class="cancel-edit" id="cancelEditBtn" type="button">Cancelar edição</button>
 
-            <div class="hint">
+            <div class="hint" id="formHint">
               Produtos novos aparecem automaticamente no topo da lista.
             </div>
           </div>
@@ -1421,12 +1455,92 @@
         </section>
       `;
 
-      document.getElementById("addBtn").onclick = addProduct;
+      document.getElementById("addBtn").onclick = saveProduct;
+
+      const cancelEditBtn = document.getElementById("cancelEditBtn");
+
+      if(cancelEditBtn){
+        cancelEditBtn.onclick = cancelEdit;
+      }
+
+      updateFormMode();
       renderProducts(allProducts);
       afterPageChange();
     }
 
-    async function addProduct(){
+    function updateFormMode(){
+      const addBtn = document.getElementById("addBtn");
+      const cancelEditBtn = document.getElementById("cancelEditBtn");
+      const formHint = document.getElementById("formHint");
+
+      if(!addBtn || !cancelEditBtn) return;
+
+      if(editingProductId){
+        addBtn.textContent = "Salvar Alterações";
+        cancelEditBtn.style.display = "block";
+
+        if(formHint){
+          formHint.textContent = "Você está editando um produto. Altere os campos e clique em Salvar Alterações.";
+        }
+      }else{
+        addBtn.textContent = "+ Adicionar Produto";
+        cancelEditBtn.style.display = "none";
+
+        if(formHint){
+          formHint.textContent = "Produtos novos aparecem automaticamente no topo da lista.";
+        }
+      }
+    }
+
+    function clearProductForm(){
+      const name = document.getElementById("name");
+      const price = document.getElementById("price");
+      const image = document.getElementById("image");
+      const link = document.getElementById("link");
+
+      if(name) name.value = "";
+      if(price) price.value = "";
+      if(image) image.value = "";
+      if(link) link.value = "";
+    }
+
+    function cancelEdit(){
+      editingProductId = null;
+      clearProductForm();
+      updateFormMode();
+      showToast("Edição cancelada.");
+    }
+
+    function startEditProduct(product){
+      const name = document.getElementById("name");
+      const price = document.getElementById("price");
+      const image = document.getElementById("image");
+      const link = document.getElementById("link");
+
+      if(!name || !price || !image || !link){
+        renderProductsLayout();
+
+        setTimeout(() => {
+          startEditProduct(product);
+        }, 80);
+
+        return;
+      }
+
+      editingProductId = product.id;
+
+      name.value = product.name || "";
+      price.value = product.price || "";
+      image.value = product.image || "";
+      link.value = product.link || "";
+
+      updateFormMode();
+
+      window.scrollTo({ top:0, behavior:"smooth" });
+      showToast("Produto aberto para edição.");
+    }
+
+    async function saveProduct(){
       const addBtn = document.getElementById("addBtn");
 
       const name = document.getElementById("name").value.trim();
@@ -1440,32 +1554,43 @@
       }
 
       addBtn.disabled = true;
-      addBtn.textContent = "Adicionando...";
+      addBtn.textContent = editingProductId ? "Salvando..." : "Adicionando...";
 
       try{
-        await addDoc(collection(db,"products"),{
-          name,
-          price,
-          image,
-          link,
-          createdAt: Date.now()
-        });
+        if(editingProductId){
+          await updateDoc(doc(db,"products",editingProductId),{
+            name,
+            price,
+            image,
+            link,
+            updatedAt: Date.now()
+          });
 
-        showToast("Produto adicionado.");
+          showToast("Produto atualizado.");
+          editingProductId = null;
+        }else{
+          await addDoc(collection(db,"products"),{
+            name,
+            price,
+            image,
+            link,
+            createdAt: Date.now()
+          });
+
+          showToast("Produto adicionado.");
+        }
+
         await loadProducts();
-
-        document.getElementById("name").value = "";
-        document.getElementById("price").value = "";
-        document.getElementById("image").value = "";
-        document.getElementById("link").value = "";
+        clearProductForm();
+        updateFormMode();
 
       }catch(error){
         console.error(error);
-        showToast("Erro ao adicionar.");
+        showToast(editingProductId ? "Erro ao salvar edição." : "Erro ao adicionar.");
       }
 
       addBtn.disabled = false;
-      addBtn.textContent = "+ Adicionar Produto";
+      updateFormMode();
     }
 
     async function loadProducts(){
@@ -1526,6 +1651,7 @@
 
           <div class="product-actions">
             <button class="icon-btn open" title="Abrir produto">↗</button>
+            <button class="icon-btn edit" title="Editar produto">✎</button>
             <button class="icon-btn delete" title="Excluir produto">🗑</button>
           </div>
         `;
@@ -1536,6 +1662,10 @@
           }
         };
 
+        div.querySelector(".edit").onclick = () => {
+          startEditProduct(p);
+        };
+
         div.querySelector(".delete").onclick = async () => {
           const confirmDelete = confirm(`Excluir "${name}"?`);
 
@@ -1543,6 +1673,13 @@
 
           try{
             await deleteDoc(doc(db,"products",p.id));
+
+            if(editingProductId === p.id){
+              editingProductId = null;
+              clearProductForm();
+              updateFormMode();
+            }
+
             showToast("Produto removido.");
             await loadProducts();
           }catch(error){
