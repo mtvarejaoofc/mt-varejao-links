@@ -6,28 +6,149 @@ window.initZyqenStudio = function(products = []){
   let uploadedImageData = null;
   let lastGeneratedBlob = null;
 
-  const templates = [
-    { id:"viral", name:"Viral Roxo", tag:"PRODUTO VIRAL", button:"COMPRAR AGORA" },
-    { id:"gold", name:"Oferta Gold", tag:"OFERTA GOLD", button:"GARANTIR OFERTA" },
-    { id:"dark", name:"Dark Premium", tag:"DARK PREMIUM", button:"VER PRODUTO" },
-    { id:"clean", name:"Clean Branco", tag:"OFERTA ESPECIAL", button:"COMPRAR" },
-    { id:"shop", name:"Loja Oferta", tag:"ACHADINHO DO DIA", button:"APROVEITAR" },
-    { id:"neon", name:"Neon Tech", tag:"NEON TECH", button:"COMPRAR AGORA" },
-    { id:"black", name:"Black Friday", tag:"BLACK FRIDAY", button:"PEGAR OFERTA" },
-    { id:"shopee", name:"Shopee Style", tag:"SUPER OFERTA", button:"COMPRAR AGORA" },
-    { id:"mercadolivre", name:"Mercado Livre Style", tag:"OFERTA IMPERDÍVEL", button:"VER OFERTA" },
-    { id:"amazon", name:"Amazon Style", tag:"PRODUTO RECOMENDADO", button:"VER AGORA" },
-    { id:"tiktok", name:"TikTok Viral", tag:"VIRAL NO TIKTOK", button:"QUERO ESSE" },
-    { id:"luxo", name:"Luxo", tag:"SELEÇÃO PREMIUM", button:"COMPRAR" },
-    { id:"minimal", name:"Minimalista", tag:"OFERTA CLEAN", button:"VER MAIS" },
-    { id:"tech", name:"Produto Tech", tag:"GADGET TECH", button:"COMPRAR" },
-    { id:"cozinha", name:"Cozinha", tag:"ITEM DE COZINHA", button:"GARANTIR" },
-    { id:"fitness", name:"Fitness", tag:"PRODUTO FITNESS", button:"COMPRAR" },
-    { id:"beleza", name:"Beleza", tag:"BELEZA E CUIDADO", button:"VER OFERTA" },
-    { id:"infantil", name:"Infantil", tag:"PRODUTO INFANTIL", button:"COMPRAR" },
-    { id:"natal", name:"Natal", tag:"PRESENTE ESPECIAL", button:"GARANTIR" },
-    { id:"urgencia", name:"Urgência", tag:"ÚLTIMAS UNIDADES", button:"APROVEITAR" }
-  ];
+ const templates = [
+
+  {
+    id:"varejao",
+    name:"MT Varejão Premium",
+    tag:"OFERTA DO DIA",
+    button:"COMPRAR AGORA"
+  },
+
+  {
+    id:"gold",
+    name:"Oferta Dourada",
+    tag:"SUPER OFERTA",
+    button:"GARANTIR OFERTA"
+  },
+
+  {
+    id:"black",
+    name:"Black Friday",
+    tag:"BLACK FRIDAY",
+    button:"PEGAR OFERTA"
+  },
+
+  {
+    id:"amazon",
+    name:"Amazon Style",
+    tag:"PRODUTO RECOMENDADO",
+    button:"VER AGORA"
+  },
+
+  {
+    id:"shopee",
+    name:"Shopee Style",
+    tag:"SUPER OFERTA",
+    button:"COMPRAR AGORA"
+  },
+
+  {
+    id:"mercadolivre",
+    name:"Mercado Livre Style",
+    tag:"OFERTA IMPERDÍVEL",
+    button:"VER OFERTA"
+  },
+
+  {
+    id:"oferta",
+    name:"Oferta Relâmpago",
+    tag:"PROMOÇÃO LIMITADA",
+    button:"APROVEITAR"
+  },
+
+  {
+    id:"desconto",
+    name:"Mega Desconto",
+    tag:"ATÉ 70% OFF",
+    button:"COMPRAR"
+  },
+
+  {
+    id:"viral",
+    name:"Produto Viral",
+    tag:"MAIS VENDIDO",
+    button:"QUERO ESSE"
+  },
+
+  {
+    id:"luxo",
+    name:"Luxo Premium",
+    tag:"SELEÇÃO PREMIUM",
+    button:"COMPRAR"
+  },
+
+  {
+    id:"clean",
+    name:"Clean Branco",
+    tag:"OFERTA ESPECIAL",
+    button:"VER PRODUTO"
+  },
+
+  {
+    id:"tech",
+    name:"Produto Tech",
+    tag:"TECNOLOGIA",
+    button:"COMPRAR"
+  },
+
+  {
+    id:"casa",
+    name:"Casa & Cozinha",
+    tag:"ACHADINHO DE CASA",
+    button:"GARANTIR"
+  },
+
+  {
+    id:"fitness",
+    name:"Fitness",
+    tag:"VIDA SAUDÁVEL",
+    button:"COMPRAR"
+  },
+
+  {
+    id:"beleza",
+    name:"Beleza",
+    tag:"CUIDADOS PESSOAIS",
+    button:"VER OFERTA"
+  },
+
+  {
+    id:"infantil",
+    name:"Infantil",
+    tag:"PARA CRIANÇAS",
+    button:"COMPRAR"
+  },
+
+  {
+    id:"natal",
+    name:"Natal",
+    tag:"PRESENTE ESPECIAL",
+    button:"GARANTIR"
+  },
+
+  {
+    id:"urgencia",
+    name:"Últimas Unidades",
+    tag:"ESTOQUE LIMITADO",
+    button:"APROVEITAR"
+  },
+
+  {
+    id:"instagram",
+    name:"Instagram Oferta",
+    tag:"ACHADINHO DO INSTAGRAM",
+    button:"VER AGORA"
+  },
+
+  {
+    id:"whatsapp",
+    name:"WhatsApp Promo",
+    tag:"OFERTA EXCLUSIVA",
+    button:"CONFERIR"
+  }
+
+];
 
   root.innerHTML = `
     <div class="studio-wrap">
@@ -428,8 +549,7 @@ window.initZyqenStudio = function(products = []){
     const link = productLinkInput.value.trim();
     const template = getTemplate(templateInput.value);
 
-    const caption = `🔥 ${template.tag}\n\n${name}\nPor apenas ${price}\n\nConfira agora na Zyqen.\n${link ? link : "Link na bio."}`;
-    captionInput.value = caption;
+    const caption = `🔥 ${template.tag}${name}Por apenas ${price}Confira agora no MT Varejão OFC.${link ? link : "Link na bio."}`;
   }
 
   async function renderStudio(){
@@ -460,7 +580,7 @@ window.initZyqenStudio = function(products = []){
 
     ctx.fillStyle = colors.title;
     ctx.font = "900 56px Poppins, Arial";
-    ctx.fillText("ZYQEN",90,145);
+    ctx.fillText("MT VAREJÃO",90,145);
 
     ctx.fillStyle = colors.accent;
     ctx.font = "900 38px Poppins, Arial";
@@ -598,7 +718,7 @@ window.initZyqenStudio = function(products = []){
 
       const link = document.createElement("a");
       link.href = url;
-      link.download = "zyqen-anuncio.png";
+      link.download = "mt-varejao-anuncio.png";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

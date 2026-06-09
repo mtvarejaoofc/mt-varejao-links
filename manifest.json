@@ -1,22 +1,22 @@
 {
-  "name": "Zyqen Links",
-  "short_name": "Zyqen",
-  "description": "Produtos virais e ferramentas que realmente valem a pena.",
+  "name": "MT Varejão OFC",
+  "short_name": "MT Varejão",
+  "description": "Ofertas, promoções e achadinhos selecionados todos os dias.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#05010d",
-  "theme_color": "#05010d",
+  "background_color": "#fffdf8",
+  "theme_color": "#fffdf8",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "Icones/Image/Zroxo.png",
+      "src": "Icones/Image/logo.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "Icones/Image/Zroxo.png",
+      "src": "Icones/Image/logo.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

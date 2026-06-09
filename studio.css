@@ -91,9 +91,9 @@
 }
 
 .studio-btn.save{
-  background:linear-gradient(135deg,#a855ff,#5b00ff);
-  color:#fff;
-  border-color:rgba(168,85,255,.35);
+  background:linear-gradient(135deg,#ffd86b,#b8860b);
+  color:#111;
+  border-color:rgba(255,216,107,.35);
 }
 
 .studio-hint{
