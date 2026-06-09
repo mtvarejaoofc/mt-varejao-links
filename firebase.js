@@ -34,4 +34,4 @@ provider.setCustomParameters({
 });
 
 
-export const ADMIN_EMAIL = "kaiccarvalhosouzaa@gmail.com";
+export const ADMIN_EMAIL = "mtvarejaoofc@gmail.com";
