@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width,
+             initial-scale=1.0,
+             minimum-scale=1.0,
+             maximum-scale=1.0,
+             user-scalable=no,
+             viewport-fit=cover"
+  >
+
+  <title>Zyqen Links</title>
+
+  <link rel="manifest" href="manifest.json">
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="Icones/Image/Zroxo.png">
+
+  <link
+    rel="apple-touch-icon"
+    href="Icones/Image/Zroxo.png">
+
+  <meta name="theme-color" content="#05010d">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Zyqen">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="stylesheet" href="style.css"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- FUNDO -->
+  <div class="background"></div>
+
+  <!-- PARTÍCULAS -->
+  <div class="particles">
+
+    <span style="left:5%; animation-delay:0s;"></span>
+    <span style="left:15%; animation-delay:2s;"></span>
+    <span style="left:25%; animation-delay:4s;"></span>
+    <span style="left:35%; animation-delay:1s;"></span>
+    <span style="left:45%; animation-delay:3s;"></span>
+    <span style="left:55%; animation-delay:5s;"></span>
+    <span style="left:65%; animation-delay:2s;"></span>
+    <span style="left:75%; animation-delay:4s;"></span>
+    <span style="left:85%; animation-delay:1s;"></span>
+    <span style="left:95%; animation-delay:3s;"></span>
+
+  </div>
+
+  <!-- CONTAINER -->
+  <main class="container">
+
+    <!-- HEADER -->
+    <header class="topbar">
+
+      <div class="logo">
+
+        <div class="logo-icon">
+          Z
+        </div>
+
+        <div class="logo-text">
+
+          <h2>ZYQEN</h2>
+
+          <p>LINKS</p>
+
+        </div>
+
+      </div>
+
+      <button class="share-btn" id="installBtn" type="button">
+
+        <img
+          src="Icones/Icon/download.svg"
+          alt=""
+          class="btn-icon"
+          draggable="false"
+        >
+
+      </button>
+
+    </header>
+
+    <!-- PERFIL -->
+    <section class="profile">
+
+      <div class="avatar">
+
+        <img
+          src="Icones/Image/logo.png"
+          alt="Zyqen"
+          loading="eager"
+          draggable="false"
+        >
+
+      </div>
+
+      <h1>
+        @zyqen
+
+        <img
+          src="Icones/Icon/badge-check.svg"
+          alt="Verificado"
+          class="verified-icon"
+          draggable="false"
+        >
+      </h1>
+
+      <p class="subtitle">
+        Produtos Virais
+      </p>
+
+      <p class="bio">
+        Ferramentas, produtos virais que realmente valem a pena.
+      </p>
+
+    </section>
+
+    <!-- SOCIAL -->
+    <section class="social-section">
+
+      <div class="socials">
+
+        <a
+          class="social"
+          href="https://www.instagram.com/zyqen_oficial/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram">
+
+          <img
+            src="Icones/Icon/instagram.svg"
+            alt=""
+            class="social-icon"
+            draggable="false"
+          >
+
+        </a>
+
+        <a
+          class="social"
+          href="mailto:zyqenstore@gmail.com"
+          aria-label="Email">
+
+          <img
+            src="Icones/Icon/mail.svg"
+            alt=""
+            class="social-icon"
+            draggable="false"
+          >
+
+        </a>
+
+      </div>
+
+    </section>
+
+    <!-- PRODUTOS -->
+    <section class="products-section">
+
+      <div class="section-title">
+
+        <div>
+          <h3>Produtos Recomendados</h3>
+          <span></span>
+        </div>
+
+        <button
+          class="layout-toggle"
+          id="layoutToggle"
+          type="button"
+          aria-label="Trocar visual dos cards">
+
+          <img
+            src="Icones/Icon/layout-grid.svg"
+            alt=""
+            id="layoutIcon"
+            draggable="false"
+          >
+
+        </button>
+
+      </div>
+
+      <div class="products" id="products">
+
+        <!-- Firebase -->
+
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+      <p>© 2026 Zyqen Links</p>
+
+    </footer>
+
+  </main>
+
+  <!-- JS -->
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="script.js"></script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js");
+      });
+    }
+
+    let deferredPrompt = null;
+
+    const installBtn = document.getElementById("installBtn");
+
+    if (installBtn) {
+
+      const isIOS =
+        /iphone|ipad|ipod/i.test(navigator.userAgent);
+
+      const isStandalone =
+        window.matchMedia("(display-mode: standalone)").matches ||
+        navigator.standalone;
+
+      installBtn.style.display = "none";
+
+      window.addEventListener("beforeinstallprompt", (e) => {
+
+        e.preventDefault();
+
+        deferredPrompt = e;
+
+        if (!isStandalone) {
+          installBtn.style.display = "flex";
+        }
+
+      });
+
+      if (isIOS && !isStandalone) {
+        installBtn.style.display = "flex";
+      }
+
+      installBtn.addEventListener("click", async () => {
+
+        if (isIOS) {
+
+          alert(
+            "Para instalar o aplicativo:\n\nSafari → Compartilhar → Adicionar à Tela de Início"
+          );
+
+          return;
+        }
+
+        if (!deferredPrompt) {
+
+          alert("Instalação indisponível no momento.");
+
+          return;
+        }
+
+        deferredPrompt.prompt();
+
+        await deferredPrompt.userChoice;
+
+        deferredPrompt = null;
+
+        installBtn.style.display = "none";
+
+      });
+
+      window.addEventListener("appinstalled", () => {
+
+        installBtn.style.display = "none";
+
+      });
+
+    }
+  </script>
+
+</body>
+
+</html>
