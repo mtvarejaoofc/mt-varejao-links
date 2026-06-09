@@ -106,10 +106,10 @@ loader.classList.add("loader-screen");
 loader.innerHTML = `
   <div class="loader-logo">
     <div class="loader-circle">
-      <span>Z</span>
+      <span>M</span>
     </div>
 
-    <h1>ZYQEN</h1>
+    <h1>MT VAREJÃO</h1>
   </div>
 `;
 
@@ -143,7 +143,7 @@ loaderStyle.innerHTML = `
   width:100vw;
   height:100vh;
   height:100dvh;
-  background:#05010d;
+  background:#fffdf8;
   display:grid;
   place-items:center;
   z-index:999999;
@@ -161,7 +161,7 @@ loaderStyle.innerHTML = `
 
 .loader-logo h1{
   margin-top:18px;
-  color:white;
+  color:#111;
   font-size:${isMobile ? "30px" : "42px"};
   letter-spacing:${isMobile ? "5px" : "8px"};
 }
@@ -181,8 +181,8 @@ loaderStyle.innerHTML = `
   position:absolute;
   inset:0;
   border-radius:50%;
-  border:3px solid rgba(168,85,255,.15);
-  border-top:3px solid #a855ff;
+  border:3px solid rgba(255,216,107,.22);
+  border-top:3px solid #b8860b;
   animation:spin 1s linear infinite;
 }
 
@@ -191,7 +191,7 @@ loaderStyle.innerHTML = `
   z-index:2;
   font-size:${isMobile ? "40px" : "56px"};
   font-weight:800;
-  color:#a855ff;
+  color:#b8860b;
   line-height:1;
   user-select:none;
 }
@@ -412,7 +412,7 @@ rippleStyle.innerHTML = `
   position:absolute;
   width:16px;
   height:16px;
-  background:rgba(255,255,255,.22);
+  background:rgba(255,216,107,.28);
   border-radius:50%;
   transform:translate(-50%,-50%);
   animation:ripple ${isMobile ? ".4s" : ".7s"} linear;
@@ -428,9 +428,9 @@ rippleStyle.innerHTML = `
   width:100%;
   padding:28px 18px;
   border-radius:20px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08);
-  color:#999;
+  background:rgba(255,255,255,.85);
+  border:1px solid rgba(184,134,11,.18);
+  color:#8a7a4a;
   text-align:center;
   font-size:14px;
 }
@@ -477,7 +477,7 @@ glowStyle.innerHTML = `
   width:500px;
   height:500px;
   border-radius:50%;
-  background:radial-gradient(circle, rgba(168,85,255,.15), transparent 70%);
+  background:radial-gradient(circle, rgba(255,216,107,.18), transparent 70%);
   pointer-events:none;
   transform:translate(-50%,-50%);
   z-index:-1;
@@ -612,4 +612,4 @@ document.addEventListener("touchend", (e) => {
 // FINAL
 // ==========================================
 
-console.log("ZYQEN CARD LAYOUT SYSTEM ATIVO 🚀");
+console.log("MT VAREJÃO OFC ATIVO 🚀");
