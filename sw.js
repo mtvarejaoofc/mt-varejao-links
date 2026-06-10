@@ -1,4 +1,4 @@
-const CACHE_NAME = "mt-varejao-cache-v4";
+const CACHE_NAME = "mt-varejao-cache-v5";
 
 const FILES_TO_CACHE = [
   "./",
@@ -19,6 +19,7 @@ const FILES_TO_CACHE = [
 
   "./Icones/Image/logo.png",
  "./Icones/Image/MTADMIN2.png",
+  "./Icones/Image/MTADMIN.png",
 
   "./Icones/Icon/instagram.svg",
   "./Icones/Icon/mail.svg",
@@ -43,7 +44,9 @@ const FILES_TO_CACHE = [
   "./Icones/Icon/lock.svg",
 
   "./Icones/Icon/coin.svg",
-  "./Icones/Icon/percent.svg"
+  "./Icones/Icon/percent.svg",
+  
+
 ];
 
 self.addEventListener("install", (event) => {

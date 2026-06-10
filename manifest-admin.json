@@ -10,13 +10,13 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "Icones/Image/MTADMIN2.png",
+      "src": "Icones/Image/MTAdmin.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "Icones/Image/MTADMIN2.png",
+      "src": "Icones/Image/MTAdmin.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

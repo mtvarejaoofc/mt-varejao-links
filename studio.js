@@ -549,7 +549,16 @@ window.initZyqenStudio = function(products = []){
     const link = productLinkInput.value.trim();
     const template = getTemplate(templateInput.value);
 
-    const caption = `🔥 ${template.tag}${name}Por apenas ${price}Confira agora no MT Varejão OFC.${link ? link : "Link na bio."}`;
+  const caption = `🔥 ${template.tag}
+
+${name}
+
+Por apenas ${price}
+
+Confira agora no MT Varejão OFC.
+${link ? link : "Link na bio."}`;
+
+captionInput.value = caption;
   }
 
   async function renderStudio(){
