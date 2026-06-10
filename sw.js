@@ -1,4 +1,4 @@
-const CACHE_NAME = "mt-varejao-cache-v3";
+const CACHE_NAME = "mt-varejao-cache-v4";
 
 const FILES_TO_CACHE = [
   "./",
@@ -18,7 +18,7 @@ const FILES_TO_CACHE = [
   "./firebase.js",
 
   "./Icones/Image/logo.png",
-  "./Icones/Image/MTADMIN.png",
+ "./Icones/Image/MTADMIN2.png",
 
   "./Icones/Icon/instagram.svg",
   "./Icones/Icon/mail.svg",
