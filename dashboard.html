@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
 
@@ -16,8 +17,8 @@
 
   <link rel="manifest" href="manifest-admin.json">
 
-<link rel="icon" type="image/png" href="Icones/Image/MTADMIN2.png">
-<link rel="apple-touch-icon" href="Icones/Image/MTADMIN2.png">
+  <link rel="icon" type="image/png" href="Icones/Image/MTADMIN2.png">
+  <link rel="apple-touch-icon" href="Icones/Image/MTADMIN2.png">
 
   <meta name="theme-color" content="#070707">
   <meta name="mobile-web-app-capable" content="yes">
@@ -27,7 +28,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="studio.css">
 
@@ -40,14 +42,16 @@
     }
 
     :root{
-      --bg:#070707;
+      --bg:#050505;
+      --panel:#0b0b0b;
       --card:rgba(255,255,255,.055);
-      --card2:rgba(255,255,255,.03);
+      --card2:rgba(255,255,255,.028);
       --line:rgba(255,255,255,.1);
+      --line2:rgba(255,216,107,.18);
       --gold:#ffd86b;
       --gold2:#b8860b;
       --text:#fff;
-      --muted:#aaa;
+      --muted:#9b9b9b;
       --danger:#ff5757;
       --radius:22px;
     }
@@ -59,17 +63,18 @@
       -webkit-text-size-adjust:100%;
       text-size-adjust:100%;
       overscroll-behavior:auto;
+      scroll-behavior:smooth;
     }
 
     body{
       font-family:"Poppins",sans-serif;
-      background:
-        radial-gradient(circle at top left,rgba(255,216,107,.13),transparent 32%),
-        radial-gradient(circle at bottom right,rgba(184,134,11,.11),transparent 34%),
-        var(--bg);
-      color:var(--text);
       min-height:100vh;
       min-height:100dvh;
+      background:
+        radial-gradient(circle at top left,rgba(255,216,107,.14),transparent 30%),
+        radial-gradient(circle at bottom right,rgba(184,134,11,.12),transparent 34%),
+        var(--bg);
+      color:var(--text);
       overflow-x:hidden;
       overscroll-behavior:auto;
     }
@@ -79,15 +84,16 @@
       position:fixed;
       inset:0;
       background-image:
-        linear-gradient(rgba(255,255,255,.023) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.023) 1px,transparent 1px);
+        linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
       background-size:64px 64px;
       pointer-events:none;
       z-index:-1;
-      opacity:.8;
+      opacity:.75;
     }
 
-    button,input{
+    button,
+    input{
       font-family:inherit;
     }
 
@@ -97,50 +103,51 @@
     }
 
     .dashboard{
-      display:grid;
-      grid-template-columns:280px 1fr;
+      width:100%;
+      max-width:1540px;
       min-height:100vh;
       min-height:100dvh;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:250px minmax(0,1fr);
     }
 
     aside{
+      height:100vh;
+      height:100dvh;
+      position:sticky;
+      top:0;
+      z-index:20;
+      padding:22px 18px;
       border-right:1px solid var(--line);
-      background:rgba(0,0,0,.28);
-      backdrop-filter:blur(22px);
-      padding:24px;
+      background:linear-gradient(180deg,rgba(255,216,107,.055),rgba(0,0,0,.28) 28%,rgba(0,0,0,.45));
+      backdrop-filter:blur(24px);
       display:flex;
       flex-direction:column;
       justify-content:space-between;
-      position:sticky;
-      top:0;
-      height:100vh;
-      height:100dvh;
-      z-index:20;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:14px;
-      margin-bottom:42px;
+      gap:12px;
+      margin-bottom:38px;
     }
 
     .brand-icon{
       width:54px;
       height:54px;
       border-radius:18px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(255,216,107,.32);
+      background:rgba(255,216,107,.055);
+      border:1px solid rgba(255,216,107,.25);
       display:flex;
       align-items:center;
       justify-content:center;
       color:var(--gold);
-      font-size:28px;
-      font-weight:800;
-      box-shadow:0 0 28px rgba(255,216,107,.12);
+      box-shadow:0 0 28px rgba(255,216,107,.1);
       flex-shrink:0;
-      user-select:none;
       overflow:hidden;
+      user-select:none;
     }
 
     .brand-icon img{
@@ -151,77 +158,83 @@
     }
 
     .brand h1{
-      font-size:23px;
+      font-size:20px;
       line-height:1;
+      font-weight:900;
+      letter-spacing:-.5px;
     }
 
     .brand span{
+      display:block;
       color:var(--gold);
-      font-size:11px;
-      letter-spacing:3px;
-      font-weight:700;
+      font-size:10px;
+      letter-spacing:4px;
+      font-weight:900;
+      margin-top:5px;
     }
 
     nav{
       display:flex;
       flex-direction:column;
-      gap:10px;
+      gap:9px;
     }
 
     .nav-item{
-      height:52px;
-      border-radius:16px;
+      height:48px;
+      border-radius:15px;
       display:flex;
       align-items:center;
-      gap:12px;
-      padding:0 16px;
-      color:#cfcfcf;
-      font-size:14px;
+      gap:11px;
+      padding:0 14px;
+      color:#d0d0d0;
+      font-size:13px;
+      font-weight:700;
       background:transparent;
       border:1px solid transparent;
       cursor:pointer;
-      transition:.25s;
+      transition:.22s ease;
       user-select:none;
     }
 
     .nav-item:hover{
-      background:rgba(255,255,255,.04);
+      background:rgba(255,255,255,.045);
+      color:#fff;
     }
 
     .nav-item.active{
       color:var(--gold);
-      background:linear-gradient(90deg,rgba(255,216,107,.18),rgba(255,216,107,.04));
-      border-color:rgba(255,216,107,.18);
+      background:linear-gradient(90deg,rgba(255,216,107,.17),rgba(255,216,107,.045));
+      border-color:rgba(255,216,107,.22);
+      box-shadow:0 10px 28px rgba(255,216,107,.06);
     }
 
     .admin-box{
       border:1px solid var(--line);
       border-radius:18px;
-      padding:15px;
+      padding:13px;
       background:rgba(255,255,255,.04);
-      margin-bottom:14px;
+      margin-bottom:12px;
     }
 
     .admin-name{
       display:flex;
       align-items:center;
       gap:10px;
-      font-weight:700;
+      font-weight:800;
+      font-size:13px;
     }
 
     .admin-mini{
       width:38px;
       height:38px;
       border-radius:14px;
-      border:1px solid var(--gold);
+      border:1px solid rgba(255,216,107,.28);
       display:flex;
       align-items:center;
       justify-content:center;
-      color:var(--gold);
-      font-weight:800;
-      flex-shrink:0;
       overflow:hidden;
-      background:rgba(255,255,255,.035);
+      background:rgba(255,216,107,.04);
+      flex-shrink:0;
     }
 
     .admin-mini img{
@@ -231,31 +244,36 @@
     }
 
     .admin-email{
-      font-size:11px;
+      font-size:10px;
       color:var(--muted);
-      margin-top:6px;
+      margin-top:7px;
       word-break:break-all;
+      line-height:1.4;
     }
 
-    .logout{
+    .logout,
+    .drawer-logout{
       width:100%;
-      height:50px;
-      border-radius:16px;
+      height:47px;
+      border-radius:15px;
       background:rgba(255,255,255,.04);
       color:#fff;
       border:1px solid var(--line);
-      font-weight:700;
-      transition:.25s;
+      font-weight:800;
+      transition:.22s;
     }
 
-    .logout:hover{
+    .logout:hover,
+    .drawer-logout:hover{
       background:rgba(255,92,92,.12);
       border-color:rgba(255,92,92,.35);
       color:#ffb3b3;
     }
 
     main{
-      padding:30px;
+      width:100%;
+      min-width:0;
+      padding:28px;
     }
 
     .topbar{
@@ -263,57 +281,70 @@
       align-items:center;
       justify-content:space-between;
       gap:18px;
-      margin-bottom:28px;
+      margin-bottom:24px;
+    }
+
+    .page-title{
+      min-width:0;
     }
 
     .page-title h2{
-      font-size:30px;
-      line-height:1.1;
-      font-weight:800;
+      font-size:36px;
+      line-height:1.05;
+      font-weight:900;
+      letter-spacing:-1.3px;
     }
 
     .page-title p{
       color:var(--muted);
-      margin-top:7px;
-      font-size:14px;
+      margin-top:8px;
+      font-size:13px;
+      line-height:1.5;
     }
 
     .top-actions{
       display:flex;
       align-items:center;
-      gap:12px;
+      gap:10px;
+      flex-shrink:0;
     }
 
     .search{
-      width:300px;
-      height:50px;
+      width:260px;
+      height:48px;
       border-radius:16px;
       border:1px solid var(--line);
-      background:rgba(0,0,0,.25);
+      background:rgba(0,0,0,.22);
       color:#fff;
-      padding:0 17px;
+      padding:0 16px;
       outline:none;
-      font-size:14px;
+      font-size:13px;
+      transition:.2s;
+    }
+
+    .search:focus{
+      border-color:rgba(255,216,107,.45);
+      box-shadow:0 0 0 4px rgba(255,216,107,.07);
     }
 
     .mobile-menu,
     .install-btn{
-      width:50px;
-      height:50px;
+      width:48px;
+      height:48px;
       border-radius:16px;
-      background:rgba(255,255,255,.055);
+      background:rgba(255,255,255,.052);
       color:#fff;
       border:1px solid var(--line);
       display:flex;
       align-items:center;
       justify-content:center;
-      transition:.25s;
+      transition:.22s;
       flex-shrink:0;
     }
 
     .mobile-menu{
       display:none;
-      font-size:22px;
+      font-size:21px;
     }
 
     .install-btn{
@@ -321,8 +352,8 @@
     }
 
     .install-btn img{
-      width:22px;
-      height:22px;
+      width:21px;
+      height:21px;
       object-fit:contain;
       filter:brightness(0) invert(1);
     }
@@ -334,9 +365,10 @@
     }
 
     .content-grid{
+      width:100%;
       display:grid;
-      grid-template-columns:minmax(320px,410px) 1fr;
-      gap:20px;
+      grid-template-columns:minmax(300px,380px) minmax(0,1fr);
+      gap:18px;
       align-items:start;
     }
 
@@ -349,12 +381,13 @@
       border:1px solid var(--line);
       border-radius:var(--radius);
       backdrop-filter:blur(22px);
-      box-shadow:0 24px 80px rgba(0,0,0,.22);
+      box-shadow:0 22px 70px rgba(0,0,0,.24);
       overflow:hidden;
+      min-width:0;
     }
 
     .card-header{
-      padding:22px;
+      padding:20px;
       border-bottom:1px solid rgba(255,255,255,.07);
       display:flex;
       align-items:center;
@@ -365,9 +398,10 @@
     .card-title{
       display:flex;
       align-items:center;
-      gap:10px;
-      font-size:19px;
-      font-weight:800;
+      gap:9px;
+      font-size:18px;
+      font-weight:900;
+      letter-spacing:-.3px;
     }
 
     .badge{
@@ -375,170 +409,201 @@
       border-radius:999px;
       background:rgba(255,216,107,.16);
       color:var(--gold);
-      font-size:12px;
-      font-weight:800;
+      font-size:11px;
+      font-weight:900;
     }
 
     .form{
-      padding:22px;
+      padding:20px;
     }
 
     label{
       display:block;
-      font-size:13px;
-      margin-bottom:8px;
-      color:#eee;
-      font-weight:600;
+      font-size:12px;
+      margin-bottom:7px;
+      color:#e9e9e9;
+      font-weight:800;
     }
 
     .field{
-      margin-bottom:18px;
+      margin-bottom:15px;
     }
 
     input{
       width:100%;
-      height:50px;
+      height:47px;
       border-radius:14px;
-      border:1px solid rgba(255,255,255,.11);
-      background:rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.105);
+      background:rgba(0,0,0,.24);
       color:white;
       outline:none;
-      padding:0 15px;
+      padding:0 14px;
       transition:.2s;
-      font-size:14px;
+      font-size:13px;
     }
 
     input:focus{
-      border-color:rgba(255,216,107,.55);
-      box-shadow:0 0 0 4px rgba(255,216,107,.08);
+      border-color:rgba(255,216,107,.5);
+      box-shadow:0 0 0 4px rgba(255,216,107,.075);
     }
 
     input::placeholder{
-      color:#777;
+      color:#737373;
     }
 
     .add{
       width:100%;
-      height:54px;
-      border-radius:16px;
+      height:51px;
+      border-radius:15px;
       background:linear-gradient(135deg,var(--gold),var(--gold2));
       color:#111;
-      font-size:15px;
+      font-size:14px;
       font-weight:900;
-      transition:.25s;
-      box-shadow:0 14px 34px rgba(255,216,107,.18);
+      transition:.22s;
+      box-shadow:0 14px 34px rgba(255,216,107,.17);
     }
 
     .add:hover{
       transform:translateY(-2px);
-      box-shadow:0 18px 42px rgba(255,216,107,.28);
+      box-shadow:0 18px 42px rgba(255,216,107,.25);
+    }
+
+    .add:disabled{
+      opacity:.65;
+      cursor:not-allowed;
+      transform:none;
     }
 
     .hint{
-      margin-top:16px;
-      color:#8d8d8d;
-      font-size:12px;
+      margin-top:14px;
+      color:#888;
+      font-size:11px;
       line-height:1.5;
     }
 
     .stats-grid{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-      padding:22px;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+      padding:20px;
     }
 
     .stat-card{
-      padding:20px;
-      border-radius:20px;
+      padding:18px;
+      border-radius:18px;
       border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.045);
+      background:rgba(255,255,255,.04);
     }
 
     .stat-card span{
       color:var(--muted);
-      font-size:13px;
+      font-size:12px;
     }
 
     .stat-card strong{
       display:block;
       margin-top:7px;
-      font-size:30px;
+      font-size:28px;
       color:var(--gold);
+      font-weight:900;
     }
 
     .products-list{
-      padding:14px;
+      padding:13px;
       display:flex;
       flex-direction:column;
-      gap:11px;
-      max-height:none;
-      overflow:visible;
+      gap:9px;
+      max-height:560px;
+      overflow-y:auto;
+      overflow-x:hidden;
+    }
+
+    .products-list::-webkit-scrollbar{
+      width:7px;
+    }
+
+    .products-list::-webkit-scrollbar-track{
+      background:transparent;
+    }
+
+    .products-list::-webkit-scrollbar-thumb{
+      background:rgba(255,216,107,.55);
+      border-radius:999px;
     }
 
     .product{
       display:grid;
-      grid-template-columns:66px 1fr auto;
+      grid-template-columns:58px minmax(0,1fr) auto;
       align-items:center;
-      gap:14px;
-      padding:12px;
-      border-radius:18px;
-      background:rgba(255,255,255,.045);
-      border:1px solid rgba(255,255,255,.07);
-      transition:.25s;
+      gap:12px;
+      min-height:76px;
+      padding:10px;
+      border-radius:16px;
+      background:rgba(255,255,255,.043);
+      border:1px solid rgba(255,255,255,.075);
+      transition:.22s;
+      min-width:0;
     }
 
     .product:hover{
-      background:rgba(255,255,255,.075);
+      background:rgba(255,255,255,.068);
       transform:translateY(-2px);
+      border-color:rgba(255,216,107,.13);
     }
 
     .thumb{
-      width:66px;
-      height:66px;
-      border-radius:15px;
+      width:58px;
+      height:58px;
+      border-radius:14px;
       object-fit:cover;
       background:#111;
       border:1px solid rgba(255,255,255,.08);
+      flex-shrink:0;
     }
 
     .product strong{
       display:block;
-      font-size:15px;
+      font-size:13px;
       margin-bottom:4px;
       line-height:1.25;
+      font-weight:900;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
     .product span{
       color:var(--gold);
-      font-size:13px;
-      font-weight:800;
+      font-size:12px;
+      font-weight:900;
     }
 
     .product small{
       display:block;
-      color:#888;
+      color:#858585;
       margin-top:4px;
-      max-width:360px;
+      max-width:100%;
       overflow:hidden;
       text-overflow:ellipsis;
       white-space:nowrap;
+      font-size:10px;
     }
 
     .product-actions{
       display:flex;
-      gap:8px;
+      gap:7px;
+      flex-shrink:0;
     }
 
     .icon-btn{
-      width:40px;
-      height:40px;
-      border-radius:13px;
+      width:36px;
+      height:36px;
+      border-radius:12px;
       color:#fff;
       background:rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.08);
-      transition:.2s;
-      font-size:16px;
+      transition:.18s;
+      font-size:14px;
     }
 
     .icon-btn:hover{
@@ -563,7 +628,7 @@
       position:fixed;
       right:22px;
       bottom:22px;
-      background:rgba(10,10,10,.9);
+      background:rgba(10,10,10,.92);
       border:1px solid rgba(255,216,107,.25);
       color:#fff;
       padding:13px 17px;
@@ -582,50 +647,90 @@
       opacity:1;
     }
 
-    .bottom-nav{
-      display:none;
-    }
-
-    .mobile-drawer{
-      display:none;
-    }
-
+    .bottom-nav,
+    .mobile-drawer,
     .drawer-overlay{
       display:none;
     }
 
-    @media(max-width:720px){
+    @media(max-width:1180px){
       .dashboard{
-        grid-template-columns:1fr;
+        grid-template-columns:230px minmax(0,1fr);
       }
 
       aside{
-        display:none;
+        padding:20px 14px;
       }
 
       main{
-        padding:18px;
+        padding:24px 18px;
       }
 
-      .mobile-menu{
-        display:flex;
+      .content-grid{
+        grid-template-columns:minmax(290px,360px) minmax(0,1fr);
+        gap:15px;
+      }
+
+      .search{
+        width:220px;
+      }
+
+      .page-title h2{
+        font-size:31px;
+      }
+
+      .brand h1{
+        font-size:18px;
+      }
+
+      .nav-item{
+        font-size:12px;
+        padding:0 12px;
+      }
+    }
+
+    @media(max-width:900px){
+      .dashboard{
+        grid-template-columns:210px minmax(0,1fr);
+      }
+
+      aside{
+        padding:18px 12px;
+      }
+
+      main{
+        padding:20px 14px;
+      }
+
+      .topbar{
+        gap:12px;
+      }
+
+      .search{
+        width:190px;
       }
 
       .content-grid{
         grid-template-columns:1fr;
       }
 
-      .search{
-        width:220px;
+      .products-list{
+        max-height:460px;
+      }
+
+      .stats-grid{
+        grid-template-columns:1fr;
       }
     }
 
     @media(max-width:720px){
-      body{
-        background:
-          radial-gradient(circle at top left,rgba(255,216,107,.16),transparent 30%),
-          radial-gradient(circle at bottom right,rgba(184,134,11,.10),transparent 36%),
-          #070707;
+      .dashboard{
+        display:block;
+        min-height:100vh;
+      }
+
+      aside{
+        display:none;
       }
 
       main{
@@ -646,6 +751,7 @@
       .page-title h2{
         font-size:21px;
         line-height:1.05;
+        letter-spacing:-.6px;
       }
 
       .page-title p{
@@ -662,22 +768,27 @@
 
       .search,
       .top-actions .brand-icon{
-        display:none;
+        display:none !important;
+      }
+
+      .mobile-menu{
+        display:flex;
       }
 
       .mobile-menu,
       .install-btn{
-        width:44px;
-        height:44px;
+        width:43px;
+        height:43px;
         border-radius:14px;
       }
 
       .install-btn img{
-        width:20px;
-        height:20px;
+        width:19px;
+        height:19px;
       }
 
       .content-grid{
+        grid-template-columns:1fr;
         gap:12px;
       }
 
@@ -742,13 +853,16 @@
       .products-list{
         padding:10px;
         gap:9px;
+        max-height:none;
+        overflow:visible;
       }
 
       .product{
-        grid-template-columns:50px 1fr auto;
+        grid-template-columns:50px minmax(0,1fr) auto;
         gap:9px;
         padding:9px;
         border-radius:15px;
+        min-height:68px;
       }
 
       .thumb{
@@ -763,6 +877,7 @@
         display:-webkit-box;
         -webkit-line-clamp:2;
         -webkit-box-orient:vertical;
+        white-space:normal;
         overflow:hidden;
       }
 
@@ -792,7 +907,7 @@
         bottom:10px;
         height:58px;
         border-radius:20px;
-        background:rgba(15,15,15,.88);
+        background:rgba(15,15,15,.9);
         border:1px solid rgba(255,255,255,.1);
         backdrop-filter:blur(24px);
         display:grid;
@@ -821,7 +936,7 @@
         display:block;
         position:fixed;
         inset:0;
-        background:rgba(0,0,0,.55);
+        background:rgba(0,0,0,.56);
         opacity:0;
         pointer-events:none;
         transition:.25s;
@@ -838,10 +953,10 @@
         position:fixed;
         top:0;
         left:0;
-        width:min(82vw,320px);
+        width:min(84vw,320px);
         height:100vh;
         height:100dvh;
-        background:rgba(12,12,12,.96);
+        background:rgba(12,12,12,.97);
         border-right:1px solid rgba(255,255,255,.1);
         backdrop-filter:blur(26px);
         z-index:90;
@@ -935,7 +1050,7 @@
       }
 
       .product{
-        grid-template-columns:46px 1fr auto;
+        grid-template-columns:46px minmax(0,1fr) auto;
         gap:8px;
         padding:8px;
       }
@@ -969,7 +1084,10 @@
     <div>
       <div class="drawer-head">
         <div class="brand" style="margin-bottom:0;">
-          <div class="brand-icon"><img src="Icones/Image/MTADMIN2.png" alt="MT Admin" draggable="false"></div>
+          <div class="brand-icon">
+            <img src="Icones/Image/MTADMIN2.png" alt="MT Admin" draggable="false">
+          </div>
+
           <div>
             <h1>MT ADMIN</h1>
             <span>ADMIN</span>
@@ -997,10 +1115,14 @@
   </div>
 
   <div class="dashboard">
+
     <aside>
       <div>
         <div class="brand">
-          <div class="brand-icon"><img src="Icones/Image/MTADMIN2.png" alt="MT Admin" draggable="false"></div>
+          <div class="brand-icon">
+            <img src="Icones/Image/MTADMIN2.png" alt="MT Admin" draggable="false">
+          </div>
+
           <div>
             <h1>MT ADMIN</h1>
             <span>VAREJÃO</span>
@@ -1019,9 +1141,13 @@
       <div>
         <div class="admin-box">
           <div class="admin-name">
-            <div class="admin-mini"><img src="Icones/Image/MTADMIN2.png" alt="MT" draggable="false"></div>
+            <div class="admin-mini">
+              <img src="Icones/Image/MTADMIN2.png" alt="MT" draggable="false">
+            </div>
+
             <div>MT Admin</div>
           </div>
+
           <div class="admin-email" id="adminEmail">admin</div>
         </div>
 
@@ -1048,12 +1174,15 @@
               draggable="false">
           </button>
 
-          <div class="brand-icon" style="width:52px;height:52px;font-size:24px;"><img src="Icones/Image/MTADMIN2.png" alt="MT Admin" draggable="false"></div>
+          <div class="brand-icon" style="width:50px;height:50px;border-radius:16px;">
+            <img src="Icones/Image/MTADMIN2.png" alt="MT Admin" draggable="false">
+          </div>
         </div>
       </div>
 
       <div class="content-grid" id="contentGrid"></div>
     </main>
+
   </div>
 
   <div class="bottom-nav">
@@ -1124,9 +1253,17 @@
       drawerOverlay.classList.remove("show");
     }
 
-    mobileMenuBtn.addEventListener("click", openDrawer);
-    drawerClose.addEventListener("click", closeDrawer);
-    drawerOverlay.addEventListener("click", closeDrawer);
+    if(mobileMenuBtn){
+      mobileMenuBtn.addEventListener("click", openDrawer);
+    }
+
+    if(drawerClose){
+      drawerClose.addEventListener("click", closeDrawer);
+    }
+
+    if(drawerOverlay){
+      drawerOverlay.addEventListener("click", closeDrawer);
+    }
 
     function setActivePage(page){
       navItems.forEach(item => {
@@ -1142,8 +1279,10 @@
     function renderOverview(){
       currentPage = "overview";
       setActivePage("overview");
+
       pageTitle.textContent = "Visão Geral";
       pageSubtitle.textContent = "Resumo rápido do painel";
+
       searchInput.style.display = "none";
       contentGrid.className = "content-grid single-grid";
 
@@ -1178,8 +1317,10 @@
     function renderStats(){
       currentPage = "stats";
       setActivePage("stats");
+
       pageTitle.textContent = "Estatísticas";
       pageSubtitle.textContent = "Dados dos produtos";
+
       searchInput.style.display = "none";
       contentGrid.className = "content-grid single-grid";
 
@@ -1207,7 +1348,9 @@
           </div>
 
           <div class="form">
-            <p class="hint">Em breve você pode adicionar contagem de cliques, visitas e conversões.</p>
+            <p class="hint">
+              Em breve você pode adicionar contagem de cliques, visitas e conversões.
+            </p>
           </div>
         </section>
       `;
@@ -1218,8 +1361,10 @@
     function renderSettings(){
       currentPage = "settings";
       setActivePage("settings");
+
       pageTitle.textContent = "Configurações";
       pageSubtitle.textContent = "Ajustes do MT Admin";
+
       searchInput.style.display = "none";
       contentGrid.className = "content-grid single-grid";
 
@@ -1252,14 +1397,17 @@
       `;
 
       document.getElementById("settingsLogoutBtn").onclick = logoutAdmin;
+
       afterPageChange();
     }
 
     function renderStudio(){
       currentPage = "studio";
       setActivePage("studio");
+
       pageTitle.textContent = "Studio";
       pageSubtitle.textContent = "Crie artes para o MT Varejão";
+
       searchInput.style.display = "none";
       contentGrid.className = "content-grid single-grid";
 
@@ -1289,8 +1437,10 @@
     function renderProductsLayout(){
       currentPage = "products";
       setActivePage("products");
+
       pageTitle.textContent = "Produtos";
       pageSubtitle.textContent = "Gerencie os produtos do MT Varejão";
+
       searchInput.style.display = "block";
       contentGrid.className = "content-grid";
 
@@ -1344,7 +1494,9 @@
       `;
 
       document.getElementById("addBtn").onclick = addProduct;
+
       renderProducts(allProducts);
+
       afterPageChange();
     }
 
@@ -1374,6 +1526,7 @@
         });
 
         showToast("Produto adicionado.");
+
         await loadProducts();
 
         document.getElementById("name").value = "";
@@ -1430,6 +1583,7 @@
 
       products.forEach((p)=>{
         const div = document.createElement("div");
+
         div.className = "product";
 
         const image = p.image || "https://via.placeholder.com/300";
@@ -1509,6 +1663,7 @@
       drawerEmail.textContent = user.email;
 
       await loadProducts();
+
       renderProductsLayout();
     });
 
@@ -1567,6 +1722,7 @@
           alert(
             "Para instalar:\n\nSafari → Compartilhar → Adicionar à Tela de Início"
           );
+
           return;
         }
 
@@ -1589,6 +1745,6 @@
     }
   </script>
 
-
 </body>
+
 </html>
