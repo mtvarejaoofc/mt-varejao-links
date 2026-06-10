@@ -36,6 +36,13 @@
       padding:0;
       box-sizing:border-box;
       -webkit-tap-highlight-color:transparent;
+    }
+
+    button,
+    .nav-item,
+    .bottom-nav div,
+    .drawer-close,
+    .drawer-logout{
       touch-action:manipulation;
     }
 
@@ -58,7 +65,7 @@
       overflow-x:hidden;
       -webkit-text-size-adjust:100%;
       text-size-adjust:100%;
-      overscroll-behavior:none;
+      overscroll-behavior:auto;
     }
 
     body{
@@ -71,7 +78,8 @@
       min-height:100vh;
       min-height:100dvh;
       overflow-x:hidden;
-      overscroll-behavior:none;
+      overflow-y:auto;
+      overscroll-behavior-y:auto;
     }
 
     body::before{
@@ -1351,7 +1359,7 @@
               <input value="Conectado ao Firebase" readonly>
             </div>
 
-            <button class="logout" id="settingsLogoutBtn" style="margin-top:8px;">
+            <button class="logout" id="settingsLogoutBtn" type="button" style="margin-top:8px;">
               Sair da conta
             </button>
 
@@ -1702,16 +1710,28 @@
       renderProducts(filtered);
     });
 
+    function openPage(page){
+      if(page === "overview") renderOverview();
+      if(page === "products") renderProductsLayout();
+      if(page === "studio") renderStudio();
+      if(page === "stats") renderStats();
+      if(page === "settings") renderSettings();
+    }
+
     navItems.forEach(item => {
       item.addEventListener("click", () => {
-        const page = item.dataset.page;
-
-        if(page === "overview") renderOverview();
-        if(page === "products") renderProductsLayout();
-        if(page === "studio") renderStudio();
-        if(page === "stats") renderStats();
-        if(page === "settings") renderSettings();
+        openPage(item.dataset.page);
       });
+    });
+
+    document.addEventListener("click", (e) => {
+      const pageBtn = e.target.closest("[data-page]");
+      if(!pageBtn) return;
+
+      const page = pageBtn.dataset.page;
+      if(!page) return;
+
+      openPage(page);
     });
 
     onAuthStateChanged(auth, async (user) => {
@@ -1748,22 +1768,6 @@
         e.preventDefault();
       }
     });
-
-    document.addEventListener("gesturestart", (e) => e.preventDefault());
-    document.addEventListener("gesturechange", (e) => e.preventDefault());
-    document.addEventListener("gestureend", (e) => e.preventDefault());
-
-    let lastTouchEnd = 0;
-
-    document.addEventListener("touchend", (e) => {
-      const now = Date.now();
-
-      if (now - lastTouchEnd <= 300) {
-        e.preventDefault();
-      }
-
-      lastTouchEnd = now;
-    }, { passive:false });
 
     let deferredPrompt = null;
 
